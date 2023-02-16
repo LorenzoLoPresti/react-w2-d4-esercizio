@@ -47,7 +47,7 @@ const Favourites = () => {
                       onClick={() => {
                         dispatch({
                           type: "REMOVE_JOBS",
-                          payload: index,
+                          payload: job,
                         });
                         console.log(favouriteJobs);
                       }}

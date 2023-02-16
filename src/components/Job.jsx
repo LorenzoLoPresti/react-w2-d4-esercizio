@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
+  const actualJob = useSelector((state) => state.jobs.jobList);
 
   console.log(
     "stato attuale",
-    useSelector((state) => state.jobs)
+    useSelector((state) => state.jobs.jobList)
   );
 
   return (
@@ -24,16 +25,29 @@ const Job = ({ data }) => {
         </a>
       </Col>
       <Col xs={2}>
-        <Button
-          onClick={() => {
-            dispatch({
-              type: "FAVOURITE_JOBS",
-              payload: data.company_name,
-            });
-          }}
-        >
-          Add favourite
-        </Button>
+        {!actualJob.includes(data.company_name) ? (
+          <Button
+            onClick={() => {
+              dispatch({
+                type: "FAVOURITE_JOBS",
+                payload: data.company_name,
+              });
+            }}
+          >
+            Add favourite
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              dispatch({
+                type: "REMOVE_JOBS",
+                payload: data.company_name,
+              });
+            }}
+          >
+            Remove Favourite
+          </Button>
+        )}
       </Col>
     </Row>
   );

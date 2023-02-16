@@ -21,7 +21,7 @@ const mainReducer = (state = initialState, action) => {
         jobs: {
           ...state.jobs,
           jobList: state.jobs.jobList.filter(
-            (jobs, index) => index !== action.payload
+            (jobs, index) => jobs !== action.payload
           ),
         },
       };
