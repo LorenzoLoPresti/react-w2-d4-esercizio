@@ -1,15 +1,13 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addFavouriteAction, removeFavouriteAction } from "./redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
   const actualJob = useSelector((state) => state.jobs.jobList);
 
-  console.log(
-    "stato attuale",
-    useSelector((state) => state.jobs.jobList)
-  );
+  console.log("stato attuale", actualJob);
 
   return (
     <Row
@@ -28,10 +26,7 @@ const Job = ({ data }) => {
         {!actualJob.includes(data.company_name) ? (
           <Button
             onClick={() => {
-              dispatch({
-                type: "FAVOURITE_JOBS",
-                payload: data.company_name,
-              });
+              dispatch(addFavouriteAction(data.company_name));
             }}
           >
             Add favourite
@@ -39,10 +34,7 @@ const Job = ({ data }) => {
         ) : (
           <Button
             onClick={() => {
-              dispatch({
-                type: "REMOVE_JOBS",
-                payload: data.company_name,
-              });
+              dispatch(removeFavouriteAction(data.company_name));
             }}
           >
             Remove Favourite

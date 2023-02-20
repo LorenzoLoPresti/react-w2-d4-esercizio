@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFavouriteAction } from "./redux/actions";
 
 const Favourites = () => {
   const favouriteJobs = useSelector((state) => {
@@ -45,11 +46,7 @@ const Favourites = () => {
                   <Col xs={4} style={{ textAlign: "end" }}>
                     <Button
                       onClick={() => {
-                        dispatch({
-                          type: "REMOVE_JOBS",
-                          payload: job,
-                        });
-                        console.log(favouriteJobs);
+                        dispatch(removeFavouriteAction(job));
                       }}
                     >
                       Remove Favourite

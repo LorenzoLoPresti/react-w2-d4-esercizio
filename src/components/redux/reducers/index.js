@@ -1,33 +1,26 @@
+import { FAVOURITE_JOBS, REMOVE_JOBS } from "../actions";
+
 const initialState = {
-  jobs: {
-    jobList: [],
-  },
+  jobList: [],
 };
 
-const mainReducer = (state = initialState, action) => {
+const joblistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FAVOURITE_JOBS":
+    case FAVOURITE_JOBS:
       return {
         ...state,
-        jobs: {
-          ...state.jobs,
-          jobList: [...state.jobs.jobList, action.payload],
-          //   jobList: state.jobs.jobList.filter((jobs) => jobs !== action.payload),
-        },
+        jobList: [...state.jobList, action.payload],
+        //   jobList: state.jobs.jobList.filter((jobs) => jobs !== action.payload),
       };
-    case "REMOVE_JOBS":
+    case REMOVE_JOBS:
       return {
         ...state,
-        jobs: {
-          ...state.jobs,
-          jobList: state.jobs.jobList.filter(
-            (jobs, index) => jobs !== action.payload
-          ),
-        },
+        jobList: state.jobList.filter((jobs, index) => jobs !== action.payload),
       };
+
     default:
       return state;
   }
 };
 
-export default mainReducer;
+export default joblistReducer;
