@@ -12,7 +12,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 const persistConfig = {
   key: "root",
   storage: storage,
-  transform: [
+  transforms: [
     encryptTransform({
       secretKey: process.env.REACT_APP_PERSIST_KEY,
     }),
