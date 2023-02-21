@@ -7,8 +7,6 @@ const Job = ({ data }) => {
   const dispatch = useDispatch();
   const actualJob = useSelector((state) => state.jobs.jobList);
 
-  console.log("stato attuale", actualJob);
-
   return (
     <Row
       className="mx-0 mt-3 p-3"

@@ -37,7 +37,10 @@ const MainSearch = () => {
     dispatch(fetchJobListAction(baseEndpoint, query + "&limit=20"));
   };
 
-  console.log(useSelector((state) => state.fetch.errors));
+  console.log(
+    "errors?",
+    useSelector((state) => state.fetch.errors)
+  );
 
   return (
     <Container>
